@@ -17,8 +17,8 @@ subprojects {
     compileJava.dependsOn validateStructure
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     //build.dependsOn 'pitest'
@@ -31,7 +31,7 @@ subprojects {
         implementation 'io.projectreactor:reactor-core'
         implementation 'io.projectreactor.addons:reactor-extra'
 
-        testImplementation 'io.projectreactor.tools:blockhound-junit-platform:1.0.11.RELEASE'
+        testImplementation 'io.projectreactor.tools:blockhound-junit-platform:1.0.13.RELEASE'
 
         testImplementation 'io.projectreactor:reactor-test'
         testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -54,10 +54,10 @@ subprojects {
     test.finalizedBy(project.tasks.jacocoTestReport)
 
     pitest {
-        targetClasses = ['co.com.crediya.autenticacion.*']
+        targetClasses = ['co.pragma.ksjimen.*']
         excludedClasses = []
         excludedTestClasses = []
-        pitestVersion = '1.19.4'
+        pitestVersion = '1.20.1'
         verbose = false
         outputFormats = ['XML', 'HTML']
         threads = 8
@@ -128,5 +128,5 @@ pitestReportAggregate {
 }
 
 tasks.named('wrapper') {
-    gradleVersion = '8.14'
+    gradleVersion = '8.14.3'
 }
